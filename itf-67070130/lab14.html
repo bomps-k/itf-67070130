@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="profile" id="profile">
+        <div class="notify"><p>1</p></div>
+    </div>
+    <h1 id="user">Username, ok</h1>
+    <label>Set username</label><input type="text" id="name"><button onclick="setName()">set</button>
+    <input type="text" id="image-url" placeholder="Enter Image URL">
+    <button onclick="changeprofile()">Change profile</button>
+    <div class="container">
+
+    </div>
+
+    <script>
+        const username = document.getElementById("user");
+        const input = document.getElementById("name");
+        const profile = document.getElementById("profile").value;
+        const newdiv = document.getElementsByClassName("container")[0];
+
+        function setName(){
+            username.textContent = input.value + ", ok";
+            input.value="";
+        }
+        function changeprofile() {
+            var imageUrl = document.getElementById('image-url').value;
+            document.body.style.backgroundImage = 'url(' + imageUrl + ')';
+        }
+        function addParagraph(){
+            const newpara = document.createElement("p");
+            newpara.textContent = "new paragraph";
+            newdiv.appendChild(newpara);
+        }
+        function saveCSV() {
+        const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+};
+    </script>
+</body>
+</html>
